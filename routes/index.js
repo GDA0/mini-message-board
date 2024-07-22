@@ -1,18 +1,7 @@
 const express = require("express");
-const router = express.Router();
+const messages = require("../public/javascripts/messages");
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+const router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
