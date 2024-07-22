@@ -5,7 +5,15 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Messages</h1>
+    <ul>
+      <% messages.forEach((message) => { %>
+      <li>
+        <strong>User:</strong> <%= message.user %> <br />
+        <strong>Text:</strong> <%= message.text %> <br />
+        <strong>Date Added:</strong> <%= message.added.toDateString() %> <br />
+      </li>
+      <% }); %>
+    </ul>
   </body>
 </html>
