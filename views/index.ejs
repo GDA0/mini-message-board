@@ -1,21 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <h1>Messages</h1>
-    <ul>
-      <% messages.forEach((message) => { %>
-      <li>
-        <strong>User:</strong> <%= message.user %> <br />
-        <strong>Text:</strong> <%= message.text %> <br />
-        <strong>Date Added:</strong> <%= message.added.toDateString() %> <br />
-        <a href="/messages/<%= message.id %>">Open</a>
-      </li>
-      <% }); %>
-    </ul>
-    <a href="/new">Add a New Message</a>
-  </body>
-</html>
+<% layout('layout') %>
+<h3>Messages</h3>
+<ul class="list-group list-group-flush">
+  <% messages.forEach((message) => { %>
+  <li class="list-group-item mb-3">
+    <div class="bg-light p-3 rounded">
+      <p class="fs-5"><%= message.text %></p>
+      <div
+        class="message-meta d-flex justify-content-between align-items-center"
+      >
+        <p class="m-0">From: <strong><%= message.user %></strong></p>
+        <p class="m-0">
+          <%= formatDistanceToNow(new Date(message.added), { addSuffix: true })
+          %>
+        </p>
+      </div>
+    </div>
+    <div class="d-flex">
+      <a href="/messages/<%= message.id %>" class="btn btn-primary my-2 ms-auto"
+        >Open</a
+      >
+    </div>
+  </li>
+  <% }); %>
+</ul>
+<a href="/new" class="btn btn-success">Add a New Message</a>
+
+<style>
+  .message-meta {
+    font-size: 0.9em;
+    color: #555;
+  }
+  .btn-success {
+    margin-top: 20px;
+  }
+</style>

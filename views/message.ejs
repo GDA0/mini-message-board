@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Message Details</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <h1>Message Details</h1>
-    <p><strong>User:</strong> <%= message.user %></p>
-    <p><strong>Text:</strong> <%= message.text %></p>
-    <p><strong>Date Added:</strong> <%= message.added.toDateString() %></p>
-    <a href="/">Home</a>
-  </body>
-</html>
+<% layout('layout') %>
+<h3>Message Detail</h3>
+<div class="bg-light p-3 rounded">
+  <p class="fs-5"><%= message.text %></p>
+  <div class="d-flex justify-content-between message-meta">
+    <p class="m-0">From: <strong><%= message.user %></strong></p>
+    <p class="m-0">
+      <%= formatDistanceToNow(new Date(message.added), { addSuffix: true }) %>
+    </p>
+  </div>
+</div>
+
+<div class="d-flex">
+  <a href="/" class="btn btn-primary ms-auto">Back</a>
+</div>
+
+<style>
+  .message-meta {
+    align-items: center;
+    font-size: 0.9em;
+    color: #555;
+  }
+  .btn-primary {
+    display: inline-block;
+    margin-top: 20px;
+  }
+</style>
