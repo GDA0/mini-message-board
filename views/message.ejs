@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Message Details</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1>Message Details</h1>
+    <p><strong>User:</strong> <%= message.user %></p>
+    <p><strong>Text:</strong> <%= message.text %></p>
+    <p><strong>Date Added:</strong> <%= message.added.toDateString() %></p>
+    <a href="/">Home</a>
+  </body>
+</html>
