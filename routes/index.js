@@ -1,19 +1,26 @@
 const express = require("express");
-const messages = require("../public/javascripts/messages");
+const Message = require("../models/message");
 const { formatDistanceToNow } = require("date-fns");
 
 const router = express.Router();
 
+function sortMessagesByDate(messages) {
+  return messages.sort((a, b) => new Date(b.added) - new Date(a.added));
+}
+
 /* GET home page. */
-router.get("/", function (req, res, next) {
+router.get("/", async (req, res, next) => {
+  const messages = await Message.find();
+  const sortedMessages = sortMessagesByDate(messages);
   res.render("index", {
     title: "Messages",
-    messages: messages,
+    messages: sortedMessages,
     formatDistanceToNow: formatDistanceToNow,
   });
 });
 
-router.get("/messages/:id", (req, res, next) => {
+router.get("/messages/:id", async (req, res, next) => {
+  const messages = await Message.find();
   const message = messages.find((msg) => msg.id === req.params.id);
   if (message) {
     res.render("message", {

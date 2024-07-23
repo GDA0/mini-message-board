@@ -1,5 +1,8 @@
 <% layout('layout') %>
-<h3>Messages</h3>
+<div class="d-flex align-items-center mb-3">
+  <h3>Messages</h3>
+  <a href="/new" class="btn btn-success ms-auto my-auto">Add a New Message</a>
+</div>
 <ul class="list-group list-group-flush">
   <% messages.forEach((message) => { %>
   <li class="list-group-item mb-3">
@@ -23,7 +26,6 @@
   </li>
   <% }); %>
 </ul>
-<a href="/new" class="btn btn-success">Add a New Message</a>
 
 <style>
   .message-meta {
